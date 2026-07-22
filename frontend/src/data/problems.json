@@ -1,0 +1,250 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Introduction, Output and Math Operators",
+      "description": "Python programs covering print statements and basic math operations.",
+      "problems": [
+        {
+          "id": "print-coding-chef",
+          "name": "Print Coding Chef",
+          "difficulty": "Easy",
+          "description": "Write a Python program that prints the exact text `'Coding Chef'` to the console.",
+          "constraints": "Time Limit: 1.0s\nMemory Limit: 256MB",
+          "starterCode": "# Write your code below\nprint(\"\")",
+          "testCases": [
+            {
+              "input": "",
+              "output": "Coding Chef",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-diff-10-3",
+          "name": "Print difference of 10 and 3",
+          "difficulty": "Easy",
+          "description": "Write a program that calculates and prints the result of subtracting `3` from `10`.",
+          "constraints": "Do not just print the number 7; calculate it using mathematical operators.",
+          "starterCode": "# Calculate and print 10 - 3\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "7",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-6-div-2",
+          "name": "Print 6 divided by 2",
+          "difficulty": "Easy",
+          "description": "Write a program that divides `6` by `2` and prints the result. In Python, division returns a float, so the output should be `3.0`.",
+          "constraints": "Use division operator `/`.",
+          "starterCode": "# Divide 6 by 2 and print\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "3.0",
+              "isHidden": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Variables and Data Types",
+      "description": "Exercises on using variables and working with different data types in Python.",
+      "problems": [
+        {
+          "id": "variable-assignment",
+          "name": "Variable Assignment",
+          "difficulty": "Easy",
+          "description": "Assign the value `25` to a variable named `age` and print it.",
+          "constraints": "Variable must be named `age`.",
+          "starterCode": "# Assign 25 to age and print age\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "25",
+              "isHidden": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Strings",
+      "description": "Practice questions on string operations and character manipulation in Python.",
+      "problems": [
+        {
+          "id": "string-slicing",
+          "name": "Extract Substring",
+          "difficulty": "Easy",
+          "description": "You are given a string `text = \"PythonProgramming\"`. Write a program to print the first 6 characters (i.e. `\"Python\"`).",
+          "constraints": "Slice the string from index 0 to 6.",
+          "starterCode": "text = \"PythonProgramming\"\n# Print the sliced string below\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "Python",
+              "isHidden": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "User inputs",
+      "description": "Coding exercises to handle user input and process data in Python.",
+      "problems": [
+        {
+          "id": "sum-of-inputs",
+          "name": "Sum of Two Inputs",
+          "difficulty": "Easy",
+          "description": "Read two integers from standard input and print their sum. Use `input()` to read each number.",
+          "constraints": "Inputs are given on two separate lines.",
+          "starterCode": "# Read two numbers and print their sum\n",
+          "testCases": [
+            {
+              "input": "5\n10",
+              "output": "15",
+              "isHidden": false
+            },
+            {
+              "input": "-3\n8",
+              "output": "5",
+              "isHidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Conditional Statements",
+      "description": "Problems on if-else statements and logical operations in Python.",
+      "problems": [
+        {
+          "id": "odd-even",
+          "name": "Odd or Even",
+          "difficulty": "Easy",
+          "description": "Read an integer from the input. Print `'Even'` if the number is even, and `'Odd'` if it is odd.",
+          "constraints": "Outputs are case sensitive. Make sure to print exactly 'Even' or 'Odd'.",
+          "starterCode": "# Read number and print Even or Odd\n",
+          "testCases": [
+            {
+              "input": "4",
+              "output": "Even",
+              "isHidden": false
+            },
+            {
+              "input": "7",
+              "output": "Odd",
+              "isHidden": false
+            },
+            {
+              "input": "0",
+              "output": "Even",
+              "isHidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Loops",
+      "description": "Practice using while loops, for loops, and loop control statements.",
+      "problems": [
+        {
+          "id": "factorial",
+          "name": "Factorial Calculator",
+          "difficulty": "Medium",
+          "description": "Read an integer `N` from standard input and compute its factorial. Print the computed factorial.",
+          "constraints": "0 <= N <= 12",
+          "starterCode": "# Read N and calculate its factorial\n",
+          "testCases": [
+            {
+              "input": "5",
+              "output": "120",
+              "isHidden": false
+            },
+            {
+              "input": "0",
+              "output": "1",
+              "isHidden": false
+            },
+            {
+              "input": "7",
+              "output": "5040",
+              "isHidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Lists",
+      "description": "Coding questions on list manipulation and array operations in Python.",
+      "problems": [
+        {
+          "id": "list-sum",
+          "name": "Sum Elements in List",
+          "difficulty": "Easy",
+          "description": "Write a program that takes a space-separated string of integers from standard input, converts it into a list of integers, and prints the sum of all elements.",
+          "constraints": "Use split() to parse the space-separated integers.",
+          "starterCode": "# Read space-separated values, parse, and print sum\n",
+          "testCases": [
+            {
+              "input": "1 2 3 4 5",
+              "output": "15",
+              "isHidden": false
+            },
+            {
+              "input": "10 -5 20",
+              "output": "25",
+              "isHidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Functions",
+      "description": "Practice problems on defining and using functions in Python programs.",
+      "problems": [
+        {
+          "id": "is-prime-func",
+          "name": "Is Prime Function",
+          "difficulty": "Medium",
+          "description": "Define a function `is_prime(n)` that returns `True` if `n` is prime, and `False` otherwise. The input will contain an integer. Print the result of calling `is_prime` with that integer.",
+          "constraints": "n > 1",
+          "starterCode": "def is_prime(n):\n    # Write logic here\n    pass\n\nval = int(input())\nprint(is_prime(val))\n",
+          "testCases": [
+            {
+              "input": "11",
+              "output": "True",
+              "isHidden": false
+            },
+            {
+              "input": "4",
+              "output": "False",
+              "isHidden": false
+            },
+            {
+              "input": "97",
+              "output": "True",
+              "isHidden": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
