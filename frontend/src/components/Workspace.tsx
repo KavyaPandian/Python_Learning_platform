@@ -147,8 +147,9 @@ const Workspace: React.FC<WorkspaceProps> = ({
   const connectWS = () => {
     setServerStatus({ connected: false, message: 'Connecting to execution engine...' });
     
-    // Connect to Node.js backend WebSocket port 5001
-    const socket = new WebSocket('ws://localhost:5001');
+    // Connect to Node.js backend WebSocket server
+    const wsUrl = import.meta.env.VITE_WS_URL || 'wss://python-learning-platform-se5q.onrender.com';
+    const socket = new WebSocket(wsUrl);
     socketRef.current = socket;
 
     socket.onopen = () => {

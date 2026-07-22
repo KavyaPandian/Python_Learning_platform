@@ -30,7 +30,8 @@ const App: React.FC = () => {
 
   // Fetch problems list from backend if available
   useEffect(() => {
-    fetch('http://localhost:5001/api/problems')
+    const API_URL = import.meta.env.VITE_API_URL || 'https://python-learning-platform-se5q.onrender.com/api/problems';
+    fetch(API_URL)
       .then(res => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json();
