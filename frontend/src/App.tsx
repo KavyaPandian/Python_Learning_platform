@@ -125,7 +125,7 @@ const App: React.FC = () => {
             WebSocket execution enabled
           </span>
 
-          {user && (
+          {user && !currentProblemId && (
             <div style={{ 
               display: 'flex', 
               alignItems: 'center', 
