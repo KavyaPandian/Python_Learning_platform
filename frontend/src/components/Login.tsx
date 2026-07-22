@@ -23,20 +23,18 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     onLogin(trimmed);
   };
 
-  const quickUsers = ['PythonMaster', 'DevCoder', 'CodeChef', 'PythonStarter'];
-
   return (
-    <div style={{ 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
-      minHeight: 'calc(100vh - 70px)', 
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: 'calc(100vh - 70px)',
       padding: '20px',
       position: 'relative',
       zIndex: 1
     }}>
-      <div className="fade-in" style={{ 
-        width: '100%', 
+      <div className="fade-in" style={{
+        width: '100%',
         maxWidth: '460px',
         position: 'relative'
       }}>
@@ -55,13 +53,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         }}></div>
 
         {/* Main Glassmorphic Card */}
-        <div className="glass-panel" style={{ 
-          padding: '40px 36px', 
-          borderRadius: '24px', 
-          background: 'rgba(15, 23, 42, 0.75)', 
+        <div className="glass-panel" style={{
+          padding: '40px 36px',
+          borderRadius: '24px',
+          background: 'rgba(15, 23, 42, 0.75)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)', 
+          border: '1px solid rgba(255, 255, 255, 0.1)',
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(59, 130, 246, 0.15)',
           position: 'relative',
           overflow: 'hidden'
@@ -78,9 +76,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
           {/* Logo Header */}
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <div style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
               justifyContent: 'center',
               width: '64px',
               height: '64px',
@@ -93,10 +91,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               <Terminal size={32} color="#60a5fa" />
             </div>
 
-            <h1 style={{ 
-              fontSize: '1.85rem', 
-              fontWeight: 800, 
-              letterSpacing: '-0.02em', 
+            <h1 style={{
+              fontSize: '1.85rem',
+              fontWeight: 800,
+              letterSpacing: '-0.02em',
               marginBottom: '8px',
               background: 'linear-gradient(to right, #ffffff, #94a3b8)',
               WebkitBackgroundClip: 'text',
@@ -113,22 +111,22 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           {/* Form */}
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
-              <label style={{ 
-                display: 'block', 
-                fontSize: '0.85rem', 
-                fontWeight: 600, 
-                color: 'var(--text-main)', 
-                marginBottom: '8px' 
+              <label style={{
+                display: 'block',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                color: 'var(--text-main)',
+                marginBottom: '8px'
               }}>
                 Username
               </label>
 
               <div style={{ position: 'relative' }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  left: '16px', 
-                  top: '50%', 
-                  transform: 'translateY(-50%)', 
+                <div style={{
+                  position: 'absolute',
+                  left: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
                   color: 'var(--text-muted)',
                   display: 'flex',
                   alignItems: 'center'
@@ -136,13 +134,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   <User size={18} />
                 </div>
 
-                <input 
-                  type="text" 
-                  value={inputName} 
+                <input
+                  type="text"
+                  value={inputName}
                   onChange={(e) => {
                     setInputName(e.target.value);
                     if (error) setError('');
-                  }} 
+                  }}
                   placeholder="Enter your username (e.g. Alex)"
                   autoFocus
                   style={{
@@ -175,58 +173,19 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               )}
             </div>
 
-            {/* Quick Pick Username Suggestions */}
-            <div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-dark)', marginBottom: '8px', fontWeight: 600 }}>
-                Quick options:
-              </div>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                {quickUsers.map((uname) => (
-                  <button
-                    key={uname}
-                    type="button"
-                    onClick={() => {
-                      setInputName(uname);
-                      setError('');
-                    }}
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.04)',
-                      border: '1px solid var(--border-color)',
-                      color: 'var(--text-muted)',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      fontSize: '0.78rem',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = '#3b82f6';
-                      e.currentTarget.style.color = '#fff';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--border-color)';
-                      e.currentTarget.style.color = 'var(--text-muted)';
-                    }}
-                  >
-                    +{uname}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             {/* Login Action Button */}
-            <button 
-              type="submit" 
-              className="btn btn-primary" 
-              style={{ 
-                width: '100%', 
-                padding: '14px', 
-                borderRadius: '12px', 
-                fontSize: '1rem', 
-                fontWeight: 700, 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{
+                width: '100%',
+                padding: '14px',
+                borderRadius: '12px',
+                fontSize: '1rem',
+                fontWeight: 700,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 gap: '8px',
                 marginTop: '10px',
                 background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
@@ -238,14 +197,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           </form>
 
           {/* Footer Features Badge */}
-          <div style={{ 
-            marginTop: '28px', 
-            paddingTop: '20px', 
-            borderTop: '1px solid var(--border-color)', 
-            display: 'flex', 
-            justifyContent: 'space-around', 
-            fontSize: '0.78rem', 
-            color: 'var(--text-muted)' 
+          <div style={{
+            marginTop: '28px',
+            paddingTop: '20px',
+            borderTop: '1px solid var(--border-color)',
+            display: 'flex',
+            justifyContent: 'space-around',
+            fontSize: '0.78rem',
+            color: 'var(--text-muted)'
           }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <ShieldCheck size={14} color="var(--success)" /> Instant Sandbox
