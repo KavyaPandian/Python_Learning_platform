@@ -20,6 +20,7 @@ interface DashboardProps {
   progressPercent: number;
   totalProblemsCount: number;
   onSelectProblem: (id: string) => void;
+  username?: string;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
@@ -27,7 +28,8 @@ const Dashboard: React.FC<DashboardProps> = ({
   solvedProblems,
   progressPercent,
   totalProblemsCount,
-  onSelectProblem
+  onSelectProblem,
+  username
 }) => {
   const solvedCount = problemsData ? problemsData.chapters
     .flatMap(c => c.problems)
@@ -72,7 +74,9 @@ const Dashboard: React.FC<DashboardProps> = ({
               <div style={{ background: '#eab308', padding: '6px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Code size={24} color="#000" />
               </div>
-              <h1 style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.02em', background: 'linear-gradient(to right, #fff, #9ca3af)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Practice Python</h1>
+              <h1 style={{ fontSize: '2rem', fontWeight: 800, letterSpacing: '-0.02em', background: 'linear-gradient(to right, #fff, #9ca3af)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                {username ? `Welcome, ${username}! 👋` : 'Practice Python'}
+              </h1>
             </div>
             <p style={{ color: 'var(--text-muted)', fontSize: '1rem', maxWidth: '650px', lineHeight: '1.6' }}>
               Solve Python coding problems online with interactive, curriculum-based execution. Write code for over {totalProblemsCount} Python coding exercises and boost your confidence in programming.

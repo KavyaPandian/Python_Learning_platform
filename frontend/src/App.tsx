@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
 import Workspace from './components/Workspace';
-import { BookOpen, Terminal, Sparkles } from 'lucide-react';
+import Login from './components/Login';
+import { BookOpen, Terminal, Sparkles, User, LogOut } from 'lucide-react';
 import type { ProblemsData } from './types';
 import defaultProblemsData from './data/problems.json';
 
@@ -10,6 +11,22 @@ const App: React.FC = () => {
   const [currentProblemId, setCurrentProblemId] = useState<string | null>(null);
   const [solvedProblems, setSolvedProblems] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
+  // User Authentication State
+  const [user, setUser] = useState<string | null>(() => {
+    return localStorage.getItem('python_user') || null;
+  });
+
+  const handleLogin = (username: string) => {
+    setUser(username);
+    localStorage.setItem('python_user', username);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('python_user');
+    setCurrentProblemId(null);
+  };
 
   // Fetch problems list from backend if available
   useEffect(() => {
@@ -106,7 +123,42 @@ const App: React.FC = () => {
             <Sparkles size={14} color="var(--accent-cyan)" />
             WebSocket execution enabled
           </span>
-          {currentProblemId && (
+
+          {user && (
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px', 
+              background: 'rgba(59, 130, 246, 0.1)', 
+              border: '1px solid rgba(59, 130, 246, 0.25)', 
+              padding: '6px 14px', 
+              borderRadius: '9999px' 
+            }}>
+              <User size={14} color="#60a5fa" />
+              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#ffffff' }}>{user}</span>
+              <button 
+                onClick={handleLogout} 
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  color: 'var(--text-muted)', 
+                  cursor: 'pointer', 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  marginLeft: '4px',
+                  padding: '2px',
+                  transition: 'color 0.2s'
+                }} 
+                title="Log out / Switch User"
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--danger)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+              >
+                <LogOut size={14} />
+              </button>
+            </div>
+          )}
+
+          {user && currentProblemId && (
             <button className="btn btn-secondary" onClick={handleBackToDashboard}>
               <BookOpen size={16} />
               Syllabus Dashboard
@@ -115,7 +167,9 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {loading ? (
+      {!user ? (
+        <Login onLogin={handleLogin} />
+      ) : loading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', flexDirection: 'column', gap: '16px' }}>
           <div className="pulse-glow" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '4px solid var(--primary)', borderTopColor: 'transparent', animation: 'spin 1s linear infinite' }}></div>
           <p style={{ color: 'var(--text-muted)' }}>Loading Syllabus and Sandbox Workspace...</p>
@@ -129,6 +183,7 @@ const App: React.FC = () => {
               progressPercent={progressPercent}
               totalProblemsCount={totalProblemsCount}
               onSelectProblem={handleSelectProblem}
+              username={user}
             />
           ) : (
             <Workspace 
