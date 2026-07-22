@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Editor, { loader } from '@monaco-editor/react';
+import { loader } from '@monaco-editor/react';
 
 // Use Cloudflare cdnjs instead of jsdelivr (which is often blocked or slow in some regions)
 loader.config({

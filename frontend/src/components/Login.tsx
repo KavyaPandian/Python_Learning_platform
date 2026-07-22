@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Terminal, ArrowRight, Sparkles, Code, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { User, Terminal, ArrowRight, Sparkles, Code, ShieldCheck } from 'lucide-react';
 
 interface LoginProps {
   onLogin: (username: string) => void;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import type { ProblemsData, Problem } from '../types';
 import { 
-  Award, 
   Star, 
   BookOpen, 
   Clock, 

@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const [problemsData, setProblemsData] = useState<ProblemsData>(defaultProblemsData as ProblemsData);
   const [currentProblemId, setCurrentProblemId] = useState<string | null>(null);
   const [solvedProblems, setSolvedProblems] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading] = useState<boolean>(false);
 
   // User Authentication State
   const [user, setUser] = useState<string | null>(() => {
