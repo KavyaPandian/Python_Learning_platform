@@ -93,6 +93,7 @@ const Workspace: React.FC<WorkspaceProps> = ({
   });
 
   const socketRef = useRef<WebSocket | null>(null);
+  const isCleaningUpRef = useRef<boolean>(false);
   
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -136,25 +137,39 @@ const Workspace: React.FC<WorkspaceProps> = ({
 
   // WebSocket connection management
   useEffect(() => {
+    isCleaningUpRef.current = false;
     connectWS();
     return () => {
+      isCleaningUpRef.current = true;
       if (socketRef.current) {
+        (socketRef.current as any).isCleanClose = true;
         socketRef.current.close();
       }
     };
   }, []);
 
   const connectWS = () => {
+    if (isCleaningUpRef.current) return;
+
+    if (socketRef.current) {
+      (socketRef.current as any).isCleanClose = true;
+      socketRef.current.close();
+      socketRef.current = null;
+    }
+
     setServerStatus({ connected: false, message: 'Connecting to execution engine...' });
     
     // Connect to Node.js backend WebSocket server
-    const wsUrl = import.meta.env.VITE_WS_URL || 'wss://python-learning-platform-se5q.onrender.com';
+    const cloudUrl = 'wss://python-learning-platform-se5q.onrender.com';
+    const localUrl = 'ws://localhost:5001';
+    const wsUrl = import.meta.env.VITE_WS_URL || (import.meta.env.DEV ? localUrl : cloudUrl);
+
     const socket = new WebSocket(wsUrl);
     socketRef.current = socket;
 
     socket.onopen = () => {
       setServerStatus({ connected: true, message: 'Sandbox Connected & Ready' });
-      setConsoleLogs(prev => [...prev, '✓ WebSocket connected to compiler sandbox.']);
+      setConsoleLogs(prev => [...prev, `✓ WebSocket connected to compiler sandbox (${wsUrl.includes('localhost') ? 'Local Engine' : 'Cloud Engine'}).`]);
     };
 
     socket.onmessage = (event) => {
@@ -207,10 +222,17 @@ const Workspace: React.FC<WorkspaceProps> = ({
     };
 
     socket.onclose = () => {
+      if ((socket as any).isCleanClose || isCleaningUpRef.current) {
+        return;
+      }
+
       setServerStatus({ connected: false, message: 'Disconnected. Reconnecting...' });
       setConsoleLogs(prev => [...prev, '⚠ WebSocket disconnected. Retrying in 3 seconds...']);
+      
       setTimeout(() => {
-        connectWS();
+        if (!isCleaningUpRef.current) {
+          connectWS();
+        }
       }, 3000);
     };
 
@@ -241,7 +263,8 @@ const Workspace: React.FC<WorkspaceProps> = ({
       type: 'run',
       code: code,
       problemId: problem.id,
-      customInput: useCustomInput ? customInput : undefined
+      customInput: useCustomInput ? customInput : undefined,
+      testCases: problem.testCases
     }));
   };
 
@@ -266,7 +289,8 @@ const Workspace: React.FC<WorkspaceProps> = ({
     socketRef.current.send(JSON.stringify({
       type: 'submit',
       code: code,
-      problemId: problem.id
+      problemId: problem.id,
+      testCases: problem.testCases
     }));
   };
 

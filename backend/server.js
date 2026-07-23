@@ -13,21 +13,23 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
-// Load problems data
+// Helper to load problems data dynamically
 const problemsFilePath = path.join(__dirname, 'problems.json');
-let problemsData = { chapters: [] };
-
-try {
-  const fileContent = fs.readFileSync(problemsFilePath, 'utf8');
-  problemsData = JSON.parse(fileContent);
-} catch (error) {
-  console.error('Error loading problems.json:', error);
-}
+const getProblemsData = () => {
+  try {
+    const fileContent = fs.readFileSync(problemsFilePath, 'utf8');
+    return JSON.parse(fileContent);
+  } catch (error) {
+    console.error('Error loading problems.json:', error);
+    return { chapters: [] };
+  }
+};
 
 // Flat array of all problems for quick lookup
 const getAllProblems = () => {
   const list = [];
-  problemsData.chapters.forEach(chapter => {
+  const currentData = getProblemsData();
+  currentData.chapters.forEach(chapter => {
     chapter.problems.forEach(problem => {
       list.push({
         ...problem,
@@ -41,7 +43,7 @@ const getAllProblems = () => {
 
 // API: Get curriculum and problems
 app.get('/api/problems', (req, res) => {
-  res.json(problemsData);
+  res.json(getProblemsData());
 });
 
 // API: Get a single problem
@@ -76,7 +78,7 @@ wss.on('connection', (ws) => {
       return;
     }
 
-    const { type, code, problemId, customInput } = payload;
+    const { type, code, problemId, customInput, testCases: clientTestCases } = payload;
 
     if (type !== 'run' && type !== 'submit') {
       ws.send(JSON.stringify({ type: 'error', error: 'Unknown request type. Use "run" or "submit"' }));
@@ -84,7 +86,11 @@ wss.on('connection', (ws) => {
     }
 
     const problems = getAllProblems();
-    const problem = problems.find(p => p.id === problemId);
+    let problem = problems.find(p => p.id === problemId);
+
+    if (!problem && clientTestCases && Array.isArray(clientTestCases)) {
+      problem = { id: problemId, testCases: clientTestCases };
+    }
 
     if (!problem) {
       ws.send(JSON.stringify({ type: 'error', error: 'Problem not found' }));

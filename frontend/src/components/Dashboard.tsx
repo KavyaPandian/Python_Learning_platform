@@ -34,6 +34,8 @@ const Dashboard: React.FC<DashboardProps> = ({
     .flatMap(c => c.problems)
     .filter(p => solvedProblems.includes(p.id)).length : 0;
 
+  const isAllCompleted = totalProblemsCount > 0 && solvedCount >= totalProblemsCount;
+
   // Track expanded chapters (by chapter ID). Default first chapter is open.
   const [expandedChapters, setExpandedChapters] = useState<Record<number, boolean>>({ 1: true });
 
@@ -128,9 +130,22 @@ const Dashboard: React.FC<DashboardProps> = ({
               <div style={{ width: `${progressPercent}%`, height: '100%', background: 'linear-gradient(to right, var(--primary), var(--success))', borderRadius: '999px', transition: 'width 0.5s ease' }}></div>
             </div>
           </div>
-          <button className="btn btn-primary" style={{ padding: '12px 28px' }} onClick={handleResume}>
-            <Play size={16} fill="#fff" />
-            Resume Practice
+          <button 
+            className={`btn ${isAllCompleted ? 'btn-success' : 'btn-primary'}`} 
+            style={{ padding: '12px 28px', display: 'flex', alignItems: 'center', gap: '8px' }} 
+            onClick={handleResume}
+          >
+            {isAllCompleted ? (
+              <>
+                <CheckCircle size={16} color="#fff" />
+                Completed
+              </>
+            ) : (
+              <>
+                <Play size={16} fill="#fff" />
+                Resume Practice
+              </>
+            )}
           </button>
         </div>
       </section>

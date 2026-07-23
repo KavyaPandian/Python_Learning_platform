@@ -49,6 +49,111 @@
               "isHidden": false
             }
           ]
+        },
+         {
+          "id": "print-5-5",
+          "name": "Print 5 5",
+          "difficulty": "Easy",
+          "description": "Write a Python program that prints the numbers `5` and `5` separated by a space.",
+          "constraints": "Do not print the output on separate lines.",
+          "starterCode": "# Print 5 and 5 separated by a space\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "5 5",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-multiple-strings",
+          "name": "Print Multiple Strings",
+          "difficulty": "Easy",
+          "description": "Write a Python program to print 'Hello' and 'Python' separated by a space using a single print statement.",
+          "constraints": "Use a single print statement with two arguments separated by a comma.",
+          "starterCode": "# Print Hello and Python\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "Hello Python",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-108-using-9-12",
+          "name": "Print 108 using 9 and 12",
+          "difficulty": "Easy",
+          "description": "Write a Python program to print 108 using 9 and 12.",
+          "constraints": "Use the multiplication operator (*). Do not directly print 108.",
+          "starterCode": "# Multiply 9 and 12\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "108",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-squares",
+          "name": "Print Squares",
+          "difficulty": "Easy",
+          "description": "Print the square values of 1, 2, 3, 4 and 5, each on a new line.",
+          "constraints": "Use exponentiation operator ** to compute squares.",
+          "starterCode": "# Write your code below\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "1\n4\n9\n16\n25",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-pattern",
+          "name": "Print Pattern",
+          "difficulty": "Easy",
+          "description": "Write a Python program to print the following pattern.",
+          "constraints": "Use only print() statements. Do not use loops.",
+          "starterCode": "# Write your code below\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "*\n**\n***\n****\n*****",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-sum-15-25",
+          "name": "Print Sum of 15 and 25",
+          "difficulty": "Easy",
+          "description": "Write a Python program that calculates and prints the sum of `15` and `25` using the addition operator `(+)`.",
+          "constraints": "Use the addition operator `(+)`. Do not directly print the answer.",
+          "starterCode": "# Calculate and print the sum\n ",
+          "testCases": [
+            {
+              "input": "",
+              "output": "40",
+              "isHidden": false
+            }
+          ]
+        },
+         {
+          "id": "print-quotient-and-remainder",
+          "name": "Print Quotient and Remainder",
+          "difficulty": "Easy",
+          "description": "Write a Python program that calculates and prints the quotient and remainder when `10` is divided by `3`. Print each result on a new line.",
+          "constraints": "Use the floor division operator (//) and modulus operator (%). Do not directly print the answers.",
+          "starterCode": "# Calculate and print the quotient and remainder\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "3\n1",
+              "isHidden": false
+            }
+          ]
         }
       ]
     },
@@ -71,7 +176,144 @@
               "isHidden": false
             }
           ]
+        },
+        {
+          "id": "print-name-variable",
+          "name": "Print Name Using Variable",
+          "difficulty": "Easy",
+          "description": "Assign the value 'PythonGlow' to a variable named platform and print it.",
+          "constraints": "Variable must be named `platform`.",
+          "starterCode": "# Assign 'PythonGlow' to platform and print it\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "PythonGlow",
+              "isHidden": false
+            }
+          ]
+        },
+         {
+          "id": "add-two-variables",
+          "name": "Add Two Variables",
+          "difficulty": "Easy",
+          "description": "Assign `15` to variable `a` and `25` to variable `b`. Print the sum of `a` and `b`.",
+          "constraints": "Use variables to calculate the sum.",
+          "starterCode": "# Assign values to a and b\n# Print their sum\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "40",
+              "isHidden": false
+            }
+          ]
+        },
+         {
+          "id": "swap-two-variables",
+          "name": "Swap Two Variables",
+          "difficulty": "Easy",
+          "description": "Assign `10` to variable `a` and `20` to variable `b`. Swap their values and print `a` and `b` on separate lines.",
+          "constraints": "Use Python's variable swapping.",
+          "starterCode": "# Assign values to a and b\n# Swap them\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "20\n10",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "store-print-float",
+          "name": "Store and Print Float",
+          "difficulty": "Easy",
+          "description": "Assign the value 3.14 to a variable named pi and print it.",
+          "constraints": "The variable must be named 'pi'.",
+          "starterCode": "# Assign 3.14 to pi and print it\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "3.14",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "store-print-boolean",
+          "name": "Store and Print Boolean",
+          "difficulty": "Easy",
+          "description": "Assign the value True to a variable named is_student and print it.",
+          "constraints": "The variable must be named 'is_student'.",
+          "starterCode": "# Assign True to is_student and print it\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "True",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "print-variable-data-types",
+          "name": "Print Variable Data Types",
+          "difficulty": "Easy",
+          "description": "Create the following variables:\n\nname = \"Python\"\nage = 20\nheight = 5.8\nis_student = True\n\nPrint the data type of each variable using the type() function.",
+          "constraints": "Print each data type on a new line in the same order.",
+          "starterCode": "# Create the variables and print their data types\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "<class 'str'>\n<class 'int'>\n<class 'float'>\n<class 'bool'>",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "convert-integer-to-float",
+          "name": "Convert Integer to Float",
+          "difficulty": "Easy",
+          "description": "Assign the value 25 to a variable named num. Convert it to a float using the float() function and print the result.",
+          "constraints": "Use the float() function.",
+          "starterCode": "# Convert integer to float and print it\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "25.0",
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "area-rectangle-variables",
+          "name": "Area of Rectangle using Variables",
+          "difficulty": "Easy",
+          "description": "Assign the values `12` and `8` to variables length and width. Calculate and print the area of the rectangle.",
+          "constraints": "Use variables to calculate the area.",
+          "starterCode": "# Assign values to length and width\n# Calculate the area\n",
+          "testCases": [
+            {
+              "input": "",
+              "output": "96",
+              "isHidden": false
+            }
+          ]
+        },
+         {
+          "id": "calculate-simple-interest",
+          "name": "Calculate Simple Interest",
+          "difficulty": "Easy",
+          "description": "Assign the following values:\n\nprincipal = 5000\nrate = 8\ntime = 2\n\nCalculate the simple interest using the formula:\n\nSI = (principal * rate * time) / 100\n\nPrint the calculated simple interest.",
+          "constraints": "Use variables for all calculations. Do not directly print the answer.",
+          "starterCode": "# Calculate the simple interest",
+          "testCases": [
+            {
+              "input": "",
+              "output": "800.0",
+              "isHidden": false
+            }
+          ]
         }
+
+        
       ]
     },
     {
